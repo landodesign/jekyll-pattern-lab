@@ -1,0 +1,190 @@
+---
+---
+{% strip %}
+{% assign plugins = site.data.plugins.items %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    {% comment %} Viewport for single mobile breakpoint @641px {% endcomment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{{page.title}}</title>
+    {% if site.data.settings.DistributeMode == "dist" %}
+    <!--gulped styles-->
+    <link rel="stylesheet" href="../css/gulp_default.min.css">
+    <!--gulped styles end-->
+    {%else%}
+    <!--Un-gulped styles-->
+    {% for baseCSS in site.data.assets.CSSBrand %}
+    <link href="../css/{{baseCSS.name}}" rel="stylesheet"/>
+    {% endfor %}
+    <!--Un-gulped styles end-->
+    {% endif %}
+    <script type="text/javascript">
+        /*!
+         * enquire.js v2.1.2 - Awesome Media Queries in JavaScript
+         * Copyright (c) 2014 Nick Williams - http://wicky.nillia.ms/enquire.js
+         * License: MIT (http://www.opensource.org/licenses/mit-license.php)
+         */
+
+        !function(a,b,c){var d=window.matchMedia;"undefined"!=typeof module&&module.exports?module.exports=c(d):"function"==typeof define&&define.amd?define(function(){return b[a]=c(d)}):b[a]=c(d)}("enquire",this,function(a){"use strict";function b(a,b){var c,d=0,e=a.length;for(d;e>d&&(c=b(a[d],d),c!==!1);d++);}function c(a){return"[object Array]"===Object.prototype.toString.apply(a)}function d(a){return"function"==typeof a}function e(a){this.options=a,!a.deferSetup&&this.setup()}function f(b,c){this.query=b,this.isUnconditional=c,this.handlers=[],this.mql=a(b);var d=this;this.listener=function(a){d.mql=a,d.assess()},this.mql.addListener(this.listener)}function g(){if(!a)throw new Error("matchMedia not present, legacy browsers require a polyfill");this.queries={},this.browserIsIncapable=!a("only all").matches}return e.prototype={setup:function(){this.options.setup&&this.options.setup(),this.initialised=!0},on:function(){!this.initialised&&this.setup(),this.options.match&&this.options.match()},off:function(){this.options.unmatch&&this.options.unmatch()},destroy:function(){this.options.destroy?this.options.destroy():this.off()},equals:function(a){return this.options===a||this.options.match===a}},f.prototype={addHandler:function(a){var b=new e(a);this.handlers.push(b),this.matches()&&b.on()},removeHandler:function(a){var c=this.handlers;b(c,function(b,d){return b.equals(a)?(b.destroy(),!c.splice(d,1)):void 0})},matches:function(){return this.mql.matches||this.isUnconditional},clear:function(){b(this.handlers,function(a){a.destroy()}),this.mql.removeListener(this.listener),this.handlers.length=0},assess:function(){var a=this.matches()?"on":"off";b(this.handlers,function(b){b[a]()})}},g.prototype={register:function(a,e,g){var h=this.queries,i=g&&this.browserIsIncapable;return h[a]||(h[a]=new f(a,i)),d(e)&&(e={match:e}),c(e)||(e=[e]),b(e,function(b){d(b)&&(b={match:b}),h[a].addHandler(b)}),this},unregister:function(a,b){var c=this.queries[a];return c&&(b?c.removeHandler(b):(c.clear(),delete this.queries[a])),this}},new g});
+    </script>
+</head>
+<body>
+<a href="#" class="skip-content hidden-xs">Skip to Content</a>
+<!--[if lte IE 9]>
+<div id="browser-upgrade">
+    <div class="container">
+                <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+                    your browser</a> to improve your experience.</p>
+    </div>
+</div>
+<![endif]-->
+<noscript>
+    <div id="browser-warning" class="no-print user-warning">
+        <div class="container">
+            <p>
+                <i class="glyphicon glyphicon-info-sign"></i>It appears JavaScript is disabled. To get the most
+                out of the website
+                we recommend enabling JavaScript in your browser.
+            </p>
+        </div>
+    </div>
+</noscript>
+<div id="wrapper">
+
+    <main role="main">
+        {{content}}
+    </main>
+
+</div>
+<!-- JS References block-->
+<!--we can write function name(s) that would  be called after loading all js files-->
+{% assign defaultFunctionCalls = 'onPageReady();' %}
+{% if site.data.settings.DistributeMode == "dist" %}
+<script type="text/javascript">
+    var isGulped = true;
+    // Add a script element as a child of the body
+    function initJS() {
+        'use strict';
+        //load jQuery
+        //if browser is ie9 or older then returm document.addEventListener
+        if (document.all && !window.atob) {
+            return;
+        }
+        downloadJS("js/gulp_script.min.uglify.js", function () {
+            {{ defaultFunctionCalls }}
+        });
+    }
+</script>
+{%else%}
+{% assign openingJs = '' %}
+{% assign closingJs = '' %}
+
+{% for baseJs in site.data.assets.JsNames %}
+{% if baseJs.name != "jquery-3.2.1.min.js" %}
+{% assign downloadName = 'downloadJS("../js/' | append: baseJs.name | append: '", function () {' %}
+{% assign openingJs = openingJs | append: downloadName %}
+{% assign closingJs = closingJs | append: '});' %}
+{% endif %}
+{% endfor %}
+
+{% assign downloadScript = openingJs | append: defaultFunctionCalls | append: closingJs %}
+<script type="text/javascript">
+    var isGulped = false;
+    // Add a script element as a child of the body
+    function initJS() {
+        'use strict';
+        //load jQuery
+        //if browser is ie9 or older then returm document.addEventListener
+        if (document.all && !window.atob) {
+            return;
+        }
+        downloadJS("../js/jquery-3.2.1.min.js", function () {
+            var jqTimer = setInterval(function () {
+                if (window.jQuery) {
+                    {{ downloadScript }}
+                    clearInterval(jqTimer);
+                }
+            }, 50);
+        });
+    }
+</script>
+{% endif %}
+{% assign pageReadyScript= '' %}
+{% assign screenChangeScript= '' %}
+{% assign scriptTypeFunction = 'if (typeof (replace-name) == "function") {replace-name();}' %}
+{% assign scriptPostfix = %}
+<!-- JS References deferred loading block-->
+<script type="text/javascript">
+    var mobileSize = {{ site.data.settings.mobileSize }};
+    var desktop = true;
+    var mobile = false;
+    //this variable will be add from code behind in CMS System
+    var isLiveSite = true;
+
+    function downloadJS(scriptSrc, callback) {
+        'use strict';
+        var element = document.createElement("script");
+        element.src = scriptSrc;
+        element.onload = function () {
+            callback();
+        };
+        document.body.appendChild(element);
+    }
+    // Check for browser support of event handling capability
+    if (window.addEventListener) {
+        window.addEventListener("load", initJS, false);
+    } else if (window.attachEvent) {
+        window.attachEvent("onload", initJS);
+    } else {
+        window.onload = initJS;
+    }
+
+    function onPageReady() {
+        enquire.register("screen and (min-width: " + (mobileSize + 1) + "px)", {
+            match: function () {
+                desktop = true;
+                mobile = false;
+                screenChange();
+            },
+            unmatch: function () {
+                desktop = false;
+            }
+        });
+        enquire.register("screen and (max-width: " + mobileSize + "px)", {
+            match: function () {
+                mobile = true;
+                desktop = false;
+                screenChange();
+            },
+            unmatch: function () {
+                mobile = false;
+                desktop = true;
+            }
+        });
+        //call page ready from all loaded files
+        {{ pageReadyScript }}
+        if (typeof (page_ready_default) == "function") {
+            page_ready_default();
+        }
+        if (typeof (loadAdditionalJs) == "function") {
+            loadAdditionalJs();
+        }
+    }
+
+    function screenChange() {
+        //call screen_change from all loaded files
+        {{ screenChangeScript }}
+        if (typeof (screen_change_default) == "function") {
+            screen_change_default();
+        }
+        if (typeof (screen_change_cookie) == "function") {
+            screen_change_cookie();
+        }
+    }
+</script>
+</body>
+</html>
+{% endstrip %}

@@ -1,0 +1,45 @@
+---
+---
+@import "webfonts";
+$screen-ms: {{ site.data.settings.maxContainerWidth }}px;
+$screen-xs: {{ site.data.settings.mobileSize }}px;
+$screen-sm: {{ site.data.settings.mobileSize | plus: 1 }}px;
+$screen-md: {{ site.data.settings.meduimScreen }}px;
+$mac-port: {{ site.data.settings.macPortrait }}px;
+$mac-land: {{ site.data.settings.macLandscape }}px;
+$min-width-on-scaled-down:  {{ site.data.settings.meduimScreen | plus: 1 }}px;
+$base-font-size: {{ site.data.settings.baseFont }}px;
+
+@import "variables";
+@import "reset";
+@import "mixins";
+@import "warnings";
+@import "temp";//Remove this file from actual project
+@import "base_structure";
+@import "standard-content";
+@import "eibrand";
+
+a.skip-content {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  color: $light-black;
+  &:focus {
+    width: auto;
+    height: auto;
+    padding: 9px 10px;
+    border: 1px solid $light-gray;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+  }
+}
+
+@import "styled-select";
+@import "forms";
+@import "base_items";

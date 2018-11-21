@@ -1,0 +1,8 @@
+#DistributeMode value can be "dev" OR "dist"
+DistributeMode: "dev"
+mobileSize: 640
+maxContainerWidth: 480
+mediumScreen: 1199
+macPortrait: 768
+macLandscape: 1024
+baseFont: 16

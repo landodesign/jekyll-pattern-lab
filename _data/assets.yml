@@ -1,0 +1,12 @@
+CSSBrand:
+ - name: 'bootstrap.min.css'
+ - name: 'default.css'
+JsNames:
+ - name: 'jquery-3.2.1.min.js'
+ - name: 'popper.js'
+ - name: 'bootstrap.min.js'
+ - name: 'picturefill.min.js'
+ - name: 'utilities.js'
+ - name: 'cookie.js'
+ - name: 'gulp_script.js'
+ - name: 'main.js'

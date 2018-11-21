@@ -1,0 +1,13 @@
+---
+title: Block thumbnail headline
+---
+<div class="block block-thumb">
+	<a href="{{ site.url }}" class="b-inner">
+		<div class="b-thumb">
+			{{ site.00-atoms | where:"title" : "Square Images" }}
+		</div>
+		<div class="b-text">
+			<h2 class="b-title">{{ site.data.content.title }}</h2>
+		</div>
+	</a>
+</div>

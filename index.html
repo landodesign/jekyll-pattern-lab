@@ -1,0 +1,60 @@
+---
+layout: global
+title: Base Template 2018
+---
+
+{% include header.html %}
+<content>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Base Template 2018</h1>
+                <p class="lead">This is Arekibo's Base Template 2018, built using Jekyll, Bootstrap 4 and Gulp.</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <ul id="sidebar" class="nav flex-column">
+                    {% for collection in site.collections %}
+                    <li class="parent"><a href="#{{ collection.label }}">{{ collection.label | split: '00-' | last | upcase  }}</a>
+                        <ul class="nav nav-stacked">
+                          {% for folder in site.documents %}
+                            <li class="child">
+                              <a href="#p-{{ folder.title | replace:' ','-' | downcase  }}">
+                                {{ folder.title }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-sm-8">
+                {% for collection in site.collections %}
+
+                    <hr>
+                    <h2 id="{{ collection.label }}">{{ collection.label | split: '00-' | last | upcase  }}</h2>
+
+                        {% for folder in site.documents %}
+
+                            <li id="p-{{ folder.title | replace:' ','-' | downcase }}" class="group">
+
+                                <h3 class="code-title">{{ folder.title }}</h3>
+
+                                <p class="description">{{ folder.description }}</p>
+
+                                {{ folder.output }}
+
+                            </li>
+                        {% endfor %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</content>
+{% include footer.html %}

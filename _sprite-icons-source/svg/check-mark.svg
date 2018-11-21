@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Orange Tick</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/Tick/Orange" fill="#FFF">
+            <path d="M19.7001499,1.8 L8.69565217,12.99 L8.005997,13.7 C7.80609695,13.9 7.50624688,14 7.2063968,14 C6.90654673,14 6.60669665,13.9 6.4067966,13.7 L0.299850075,7.59 C-0.099950025,7.19 -0.099950025,6.49 0.299850075,6.09 C0.699650175,5.69 1.39930035,5.69 1.79910045,6.09 L7.15642179,11.45 L18.2008996,0.3 C18.6006997,-0.1 19.3003498,-0.1 19.7001499,0.3 C20.09995,0.7 20.09995,1.4 19.7001499,1.8" id="Orange-Tick"></path>
+        </g>
+    </g>
+</svg>

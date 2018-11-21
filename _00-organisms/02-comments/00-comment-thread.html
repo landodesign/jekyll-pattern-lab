@@ -1,0 +1,15 @@
+---
+title: Comment Thread
+---
+<section class="comments section">
+	<div class="comments-container" id="comments-container">
+		<h2 class="section-title">59 Comments</h2>
+		{{ site.00-molecules | where:"title" : "Comment Form" }}
+		<ul class="comment-list">
+			{{# listItems.five }}
+				{{ site.00-molecules | where:"title" : "Single Comment" }}
+			{{/ listItems.five }}
+		</ul>
+	</div>
+	{{ site.00-molecules | where:"title" : "Pagination" }}
+</section>

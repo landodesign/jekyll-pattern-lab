@@ -1,0 +1,5 @@
+cookies:
+ message: <strong>Cookies:</strong> By Using this website, you agree to the use of cookies in accordance with the Cookie Policy. For more information on cookies see our
+ linkLabel: Cookie Policy
+ linkUrl: '#/'
+ buttonText: Ok

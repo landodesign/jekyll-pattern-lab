@@ -1,0 +1,145 @@
+// Line height
+$base-line-height: 1.6;
+// Other Sizes
+$base-spacing: $base-line-height * 1em;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+// Brand colours - naming convention maintained as per Bootstrap
+$gray-base: #000;
+$gray-lighter: lighten($gray-base, 93.7%);
+$gray-light: lighten($gray-base, 60%);
+$gray: #A59D95;
+$gray-dark: lighten($gray-base, 43.13%);
+$gray-darker: $gray;
+
+$brand-primary: #009FDA;
+$brand-secondary: #c84f00;
+
+$stryde: 'StRyde-Regular', Georgia, serif;
+$strydeb: 'StRyde-Bold', Georgia, serif;
+$strydei: 'StRyde-Italic', Georgia, serif;
+$strydem: 'StRyde-Meduim', Georgia, serif;
+$strydemi: 'StRyde-MediumItalic', Georgia, serif;
+$strydel: 'StRyde-Light', Georgia, serif;
+$helv-base: 'HelveticaNeue', Helvetica, sans-serif;
+$helv: 'HelveticaNeueLTStd-Md', Helvetica, sans-serif;
+$helv-bold:'HelveticaNeueLTStd-Bd', Helvetica, sans-serif;
+
+$h1ff: $stryde;
+
+// Base Colors
+$white: #ffffff;
+$light-black: $gray-dark;// Occurence as color, bg-color
+$light-gray: $gray-light;
+$border-color: $gray-lighter;
+$powder-blue: #c9d6de;
+$pale-turquoise: #f0f5f9;
+$bg-light: #f3f1f1;
+$anchor-color: $brand-primary;
+$anchor-color-disabled: #8ec0e4;
+$anchor-color-hover: $brand-secondary;
+$pin-color: #de7e73;
+$browserUpgradeBg: #fcf8e3;
+$browserWarningBg: #d9edf7;
+$brdr-color: #bbbbbb;
+$form-success-msg: #fdf2ea;
+$form-success-msg-border: #e08b29;
+///
+$blue-title: #3e9ad8;
+$blue-bg: #0075b0;
+$light-black: #6e6e6e;
+$sharp-black: #353535;
+$text-color: #525252;
+$shop-active-title: #4c4c4c;
+$mobile-menu-icon: #a8a8a8;
+$list-dot-color: #e08b29;
+$decrement-border-color: #c5c5c5;
+$bg-color: #efefef;
+$light-pink: #fdf2ea;
+$border-color-bb:#bbb;
+$light-gray-text: #979797;
+$fb: #3b5998;
+$twitter: #4099ff;
+$whatsapp:#4dc247;
+// Layout
+// -------------------------
+$global-zindex:             10;
+$grid-push-gutter:          45px;
+$max-width:                 1260px;
+$mainnav-gapleft:           236px;
+$topnav-height:             40px;
+$ui-height:                 100px;
+$ui-height-mobile:          60px;
+$sticky-height:             70px;
+$internalnav-height:        50px;
+$padding-content-mobile:    20px;
+$ui-zindex:                 50;
+
+
+// Animations CSS
+// --------------
+// Cubic
+$easeInCubic    :           cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$easeOutCubic   :           cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$easeInOutCubic :           cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+// Circ
+$easeInCirc     :           cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$easeOutCirc    :           cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$easeInOutCirc  :           cubic-bezier(0.785, 0.135, 0.150, 0.860);
+
+// Expo
+$easeInExpo     :           cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$easeOutExpo    :           cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$easeInOutExpo  :           cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
+// Quad
+$easeInQuad     :           cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$easeOutQuad    :           cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$easeInOutQuad  :           cubic-bezier(0.455, 0.030, 0.515, 0.955);
+
+// Quart
+$easeInQuart    :           cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$easeOutQuart   :           cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$easeInOutQuart :           cubic-bezier(0.770, 0.000, 0.175, 1.000);
+
+// Quint
+$easeInQuint    :           cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$easeOutQuint   :           cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$easeInOutQuint :           cubic-bezier(0.860, 0.000, 0.070, 1.000);
+
+// Sine
+$easeInSine     :           cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$easeOutSine    :           cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$easeInOutSine  :           cubic-bezier(0.445, 0.050, 0.550, 0.950);
+
+// Back
+$easeInBack     :           cubic-bezier(0.600, -0.280, 0.735, 0.045);
+$easeOutBack    :           cubic-bezier(0.175,  0.885, 0.320, 1.275);
+$easeInOutBack  :           cubic-bezier(0.680, -0.550, 0.265, 1.550);
+
+//Material standard
+$materialEaseLinear :       cubic-bezier(0.4, 0.0, 0.2, 1);
+//Material ease out
+$materialEaseIn :           cubic-bezier(0.4, 0.0, 1, 1);
+//Material ease in
+$materialEaseOut :          cubic-bezier(0.0, 0.0, 0.2, 1);
+//Material curve
+$materialEaseCurve :        cubic-bezier(0.4, 0.0, 0.6, 1);
+//Ease linear Out
+$easeLinearOut:             cubic-bezier(0.250, 0.250, 0.665, 1.000);
+
+//HEADERS
+//Home Page
+
+$tbl-radius: 5px;
+
+$screen-ms: 480px;
+$screen-xs: 640px;
+$screen-sm: 641px;
+$screen-md: 1199px;
+$mac-port: 768px;
+$mac-land: 1024px;
+$min-width-on-scaled-down:  1200px;
+$base-font-size: 1rem;
